@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
-from blockchain import Blockchain
+from src.blockchain.blockchain import Blockchain
+from config.config import TRANSACTION_FEE, DEBUGGING_MODE
 
 app = Flask(__name__)
+app.debug = DEBUGGING_MODE
 blockchain = Blockchain()
 
 @app.route('/chain', methods=['GET'])

@@ -1,7 +1,7 @@
 import hashlib
 import json
 import time
-from config import TRANSACTION_FEE
+from config.config import TRANSACTION_FEE
 
 class Blockchain:
     def __init__(self):
@@ -13,7 +13,7 @@ class Blockchain:
         block = {
             'index': len(self.chain) + 1,
             'timestamp': time.time(),
-            'transactions': self.pending_transactions,
+            'transaction': self.pending_transactions,
             'previous_hash': previous_hash,
             'hash': None,  
         }
@@ -83,6 +83,3 @@ class Blockchain:
             validation_messages.append("Blockchain is valid!")
 
         return is_valid, validation_messages
-
-
-
