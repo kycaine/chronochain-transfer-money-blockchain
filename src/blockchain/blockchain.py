@@ -1,13 +1,16 @@
 import hashlib
 import json
 import time
+import os
+from dotenv import load_dotenv
 from config.config import TRANSACTION_FEE
+
 
 class Blockchain:
     def __init__(self):
         self.chain = []
         self.pending_transactions = []
-        self.create_block(previous_hash="0")  # new genesis block
+        self.create_block(previous_hash="0") 
 
     def create_block(self, previous_hash):
         block = {
@@ -24,7 +27,7 @@ class Blockchain:
 
     def hash_block(self, block):
         block_copy = block.copy()
-        block_copy.pop('hash', None) 
+        block_copy.pop('hash', None)
         block_string = json.dumps(block_copy, sort_keys=True).encode()
         return hashlib.sha256(block_string).hexdigest()
     
