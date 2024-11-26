@@ -1,0 +1,15 @@
+1 Add a New Transaction (pending block)
+Request:
+curl -X POST -H "Content-Type: application/json" -d '{"sender": "Alice", "recipient": "Bob", "amount": 50}' http://127.0.0.1:5000/transactions/new
+
+2  Mine a New Block
+Request:
+curl http://127.0.0.1:5000/mine
+
+3 Validate the Blockchain
+Request:
+curl http://127.0.0.1:5000/validate
+
+4 Get the Full Blockchain
+Request:
+curl http://127.0.0.1:5000/chain
