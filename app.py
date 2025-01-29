@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO, emit
 from src.blockchain.blockchain import Blockchain
-from dotenv import load_dotenv
-import os
-from config.config import TRANSACTION_FEE, DEBUGGING_MODE
+from config.config import DEBUGGING_MODE, PORT, FLASK_HOST
 
 
 app = Flask(__name__)
@@ -20,7 +18,7 @@ def get_chain():
     }
     return jsonify(response), 200
 
-@app.route('/transactions/new', methods=['POST'])
+@app.route('/transactions', methods=['POST'])
 def new_transaction():
     data = request.get_json()
 
@@ -62,7 +60,6 @@ def validate_chain():
     
     return jsonify(response), 200
 
-# socketIO handling 
 @socketio.on('connect')
 def handle_connect():
     print("A new peer has connected!")
@@ -72,4 +69,4 @@ def handle_disconnect():
     print("A peer has disconnected!")
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5000)
+    socketio.run(app, host=FLASK_HOST, port=PORT)

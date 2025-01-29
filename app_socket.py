@@ -1,9 +1,10 @@
 import socketio
 from src.blockchain.blockchain import Blockchain
+from config.config import SOCKET_HOST, PORT
 
 sio = socketio.Client()
 blockchain = Blockchain()
-sio.connect('http://localhost:5000')
+sio.connect(f'http://{SOCKET_HOST}:{PORT}') 
 
 @sio.event
 def message(data):
