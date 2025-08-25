@@ -1,0 +1,117 @@
+{
+  "blockchain": {
+    "chain_id": "proof_of_uptime_chain",
+    "genesis": {
+      "timestamp": "2025-01-01T00:00:00Z",
+      "initial_supply": 1000000,
+      "bonus_rule": {
+        "interval_days": 100,
+        "amount": 1000,
+        "decay_interval_days": 300,
+        "decay_percent": 5
+      }
+    },
+    "blocks": [
+      {
+        "height": 1,
+        "timestamp": "2025-01-01T00:10:00Z",
+        "previous_hash": "0x000000",
+        "hash": "0xabc123",
+        "transactions": [
+          {
+            "txid": "0xtx001",
+            "from": "addr_user1",
+            "to": "addr_user2",
+            "amount": 500,
+            "fee": 0.25,
+            "status": "confirmed"
+          }
+        ]
+      },
+      {
+        "height": 2,
+        "timestamp": "2025-01-01T00:20:00Z",
+        "previous_hash": "0xabc123",
+        "hash": "0xdef456",
+        "transactions": [
+          {
+            "txid": "0xtx002",
+            "from": "addr_user3",
+            "to": "addr_user4",
+            "amount": 2000,
+            "fee": 1,
+            "status": "confirmed"
+          }
+        ]
+      }
+    ]
+  },
+  "pools": {
+    "tx_pool": [
+      {
+        "txid": "0xtx005",
+        "from": "addr_user5",
+        "to": "addr_user6",
+        "amount": 100,
+        "fee": 0.05,
+        "status": "pending"
+      },
+      {
+        "txid": "0xtx006",
+        "from": "addr_user7",
+        "to": "addr_user8",
+        "amount": 250,
+        "fee": 0.125,
+        "status": "pending"
+      }
+    ],
+    "re_pool": {
+      "balance": 1250.375,
+      "sources": {
+        "fees": 250.375,
+        "bonus_tokens": 1000
+      },
+      "last_distribution": "2025-01-31T00:00:00Z"
+    }
+  },
+  "nodes": [
+    {
+      "node_id": "node01",
+      "uptime_days": 45,
+      "stake_locked": 100,
+      "last_heartbeat": "2025-02-01T12:05:00Z",
+      "status": "active"
+    },
+    {
+      "node_id": "node02",
+      "uptime_days": 32,
+      "stake_locked": 100,
+      "last_heartbeat": "2025-02-01T12:05:00Z",
+      "status": "active"
+    },
+    {
+      "node_id": "node03",
+      "uptime_days": 12,
+      "stake_locked": 100,
+      "last_heartbeat": "2025-02-01T12:04:00Z",
+      "status": "inactive"
+    }
+  ],
+  "reward_distribution": {
+    "period": "2025-01-01 to 2025-01-31",
+    "total_reward": 1250.375,
+    "rules": {
+      "elder_reward": "10% untuk 10% node terlama",
+      "party_reward": "90% untuk semua node valid (uptime >= 30 hari + 100 token locked)"
+    },
+    "eligible_nodes": ["node01", "node02"],
+    "distributed": {
+      "elder_reward_total": 125.0375,
+      "party_reward_total": 1125.3375,
+      "per_node": {
+        "node01": 688.70625,
+        "node02": 561.66875
+      }
+    }
+  }
+}
