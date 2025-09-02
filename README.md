@@ -1,17 +1,49 @@
+# Project Structure
+```text
 chronochain/
 ├── api/            
 │   ├── router.go
-│   └── handlers.go
+│   ├── transaction_handler.go
+│   ├── node_handler.go
+│   └── reward_handler.go
+│
 ├── src/           
-│   ├── blockchain/
-│   │   ├── block.go
-│   │   ├── chain.go
-│   │   └── transaction.go
-│   ├── node/
-│   │   └── node.go
-│   └── pools/
-│       └── pool.go
+│   ├── models/               
+│   │   ├── block.go          
+│   │   ├── transaction.go    
+│   │   ├── node.go           
+│   │   └── reward.go         
+│   │
+│   ├── services/             
+│   │   ├── blockchain_service.go
+│   │   ├── transaction_service.go
+│   │   ├── node_service.go
+│   │   └── reward_service.go
+│   │
+│   ├── rewards/              
+│   │   ├── pool.go
+│   │   └── distribution.go
+│   │
+│   ├── config/               
+│   │   └── config.go
+│   │
+│   └── utils/                
+│       └── logger.go
+│
+├── tests/                    
+│   ├── block_test.go
+│   ├── transaction_test.go
+│   ├── node_test.go
+│   └── reward_test.go
+│
 ├── cmd/
-│   └── main.go     
+│   ├── api/                  
+│   │   └── main.go
+│   └── cli/                 
+│       └── main.go
+│
 ├── go.mod
 └── go.sum
+
+```
+
